@@ -1,18 +1,13 @@
 
-const mongooes = require('mongoose');
+import mongoose from "mongoose";
 
-async function db(){
-
+async function db() {
     try {
-        const result = await mongooes.connect("mongodb+srv://imrancitbd:XB8POdpGcwJ1pqnG@cluster0.wrtrx.mongodb.net/shortner?retryWrites=true&w=majority&appName=Cluster0");
-        
+        await mongoose.connect("mongodb+srv://imrancitbd:XB8POdpGcwJ1pqnG@cluster0.wrtrx.mongodb.net/shortner?retryWrites=true&w=majority&appName=Cluster0");
+        console.log("db connected"); // Move this inside the try block
     } catch (error) {
-        console.log(error)
+        console.log(error, "db error");
     }
-    
-
 }
-console.log("db connected")
 
-
-module.exports = db
+export { db };
